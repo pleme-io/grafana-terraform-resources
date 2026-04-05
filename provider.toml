@@ -1,0 +1,9 @@
+[provider]
+name = "grafana"
+version = "0.1.0"
+description = "Grafana observability platform"
+
+[provider.auth]
+url = { type = "String", required = true, env = "GRAFANA_URL" }
+auth = { type = "String", required = true, sensitive = true, env = "GRAFANA_AUTH" }
+org_id = { type = "Integer", required = false, default = 1 }

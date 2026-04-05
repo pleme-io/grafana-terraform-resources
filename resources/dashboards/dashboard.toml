@@ -1,0 +1,64 @@
+[resource]
+name = "grafana_dashboard"
+description = "Manages a Grafana dashboard"
+category = "dashboards"
+
+[crud]
+create_endpoint = "/api/dashboards/db"
+create_schema = "DashboardCreate"
+update_endpoint = "/api/dashboards/db"
+update_schema = "DashboardUpdate"
+read_endpoint = "/api/dashboards/uid/{uid}"
+read_schema = "DashboardGet"
+delete_endpoint = "/api/dashboards/uid/{uid}"
+delete_schema = "DashboardDelete"
+
+[identity]
+id_field = "dashboard_id"
+import_field = "uid"
+force_new_fields = []
+
+[fields.config_json]
+type = "String"
+required = true
+description = "The full dashboard JSON model"
+
+[fields.folder]
+type = "String"
+required = false
+description = "Folder UID to store the dashboard in"
+
+[fields.overwrite]
+type = "Boolean"
+required = false
+description = "Whether to overwrite an existing dashboard with the same UID"
+
+[fields.message]
+type = "String"
+required = false
+description = "Commit message for the dashboard version"
+
+[fields.id]
+type = "Integer"
+computed = true
+description = "Numeric ID of the dashboard"
+
+[fields.uid]
+type = "String"
+computed = true
+description = "Unique identifier of the dashboard"
+
+[fields.url]
+type = "String"
+computed = true
+description = "URL path of the dashboard"
+
+[fields.version]
+type = "Integer"
+computed = true
+description = "Version number of the dashboard"
+
+[fields.slug]
+type = "String"
+computed = true
+description = "URL-friendly slug of the dashboard title"

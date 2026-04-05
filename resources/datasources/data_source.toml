@@ -1,0 +1,60 @@
+[resource]
+name = "grafana_data_source"
+description = "Manages a Grafana data source connection"
+category = "datasources"
+
+[crud]
+create_endpoint = "/api/datasources"
+create_schema = "DataSourceCreate"
+update_endpoint = "/api/datasources/{id}"
+update_schema = "DataSourceUpdate"
+read_endpoint = "/api/datasources/uid/{uid}"
+read_schema = "DataSourceGet"
+delete_endpoint = "/api/datasources/uid/{uid}"
+delete_schema = "DataSourceDelete"
+
+[identity]
+id_field = "id"
+import_field = "uid"
+force_new_fields = []
+
+[fields.type]
+type = "String"
+required = true
+description = "Data source type (e.g. prometheus, loki, elasticsearch)"
+
+[fields.name]
+type = "String"
+required = true
+description = "Display name of the data source"
+
+[fields.url]
+type = "String"
+required = true
+description = "URL of the data source backend"
+
+[fields.uid]
+type = "String"
+required = false
+description = "Unique identifier for the data source"
+
+[fields.is_default]
+type = "Boolean"
+required = false
+description = "Whether this is the default data source"
+
+[fields.json_data_encoded]
+type = "String"
+required = false
+description = "JSON-encoded additional data source settings"
+
+[fields.secure_json_data_encoded]
+type = "String"
+required = false
+sensitive = true
+description = "JSON-encoded sensitive data source settings"
+
+[fields.id]
+type = "Integer"
+computed = true
+description = "Numeric ID of the data source"

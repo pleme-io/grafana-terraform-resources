@@ -1,0 +1,44 @@
+[resource]
+name = "grafana_folder"
+description = "Manages a Grafana folder for organizing dashboards"
+category = "folders"
+
+[crud]
+create_endpoint = "/api/folders"
+create_schema = "FolderCreate"
+update_endpoint = "/api/folders/{uid}"
+update_schema = "FolderUpdate"
+read_endpoint = "/api/folders/{uid}"
+read_schema = "FolderGet"
+delete_endpoint = "/api/folders/{uid}"
+delete_schema = "FolderDelete"
+
+[identity]
+id_field = "id"
+import_field = "uid"
+force_new_fields = []
+
+[fields.title]
+type = "String"
+required = true
+description = "Title of the folder"
+
+[fields.uid]
+type = "String"
+required = false
+description = "Unique identifier for the folder"
+
+[fields.parent_folder_uid]
+type = "String"
+required = false
+description = "UID of the parent folder for nested folders"
+
+[fields.id]
+type = "Integer"
+computed = true
+description = "Numeric ID of the folder"
+
+[fields.url]
+type = "String"
+computed = true
+description = "URL path of the folder"
